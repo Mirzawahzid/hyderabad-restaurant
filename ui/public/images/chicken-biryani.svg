@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#FFF3E0"/>
+      <stop offset="100%" stop-color="#FF8F00"/>
+    </radialGradient>
+    <radialGradient id="rice" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="100%" stop-color="#F4A800"/>
+    </radialGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  <!-- Decorative dots -->
+  <circle cx="30" cy="30" r="6" fill="#FF6F00" opacity="0.4"/>
+  <circle cx="370" cy="30" r="6" fill="#FF6F00" opacity="0.4"/>
+  <circle cx="30" cy="270" r="6" fill="#FF6F00" opacity="0.4"/>
+  <circle cx="370" cy="270" r="6" fill="#FF6F00" opacity="0.4"/>
+  <!-- Spice dots -->
+  <circle cx="60" cy="80" r="3" fill="#BF360C" opacity="0.35"/>
+  <circle cx="340" cy="90" r="3" fill="#BF360C" opacity="0.35"/>
+  <circle cx="80" cy="220" r="3" fill="#BF360C" opacity="0.35"/>
+  <circle cx="320" cy="210" r="3" fill="#BF360C" opacity="0.35"/>
+  <!-- Plate shadow -->
+  <ellipse cx="200" cy="220" rx="115" ry="18" fill="#D84315" opacity="0.2"/>
+  <!-- Plate -->
+  <ellipse cx="200" cy="205" rx="130" ry="22" fill="#E8E0D0"/>
+  <ellipse cx="200" cy="200" rx="125" ry="20" fill="#FFF8F0"/>
+  <!-- Bowl body -->
+  <path d="M90 145 Q90 220 200 225 Q310 220 310 145 Z" fill="url(#rice)"/>
+  <!-- Rice texture lines -->
+  <path d="M120 165 Q160 155 200 158 Q240 155 280 165" stroke="#F4A800" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M105 180 Q155 168 200 171 Q245 168 295 180" stroke="#E69500" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <path d="M100 195 Q155 183 200 186 Q245 183 300 195" stroke="#E69500" stroke-width="1.5" fill="none" opacity="0.4"/>
+  <!-- Chicken pieces -->
+  <ellipse cx="165" cy="155" rx="22" ry="16" fill="#BF360C" opacity="0.9"/>
+  <ellipse cx="200" cy="148" rx="20" ry="14" fill="#D84315" opacity="0.9"/>
+  <ellipse cx="235" cy="155" rx="22" ry="16" fill="#BF360C" opacity="0.9"/>
+  <!-- Garnish - coriander -->
+  <circle cx="170" cy="142" r="5" fill="#388E3C" opacity="0.8"/>
+  <circle cx="200" cy="136" r="5" fill="#388E3C" opacity="0.8"/>
+  <circle cx="230" cy="142" r="5" fill="#2E7D32" opacity="0.8"/>
+  <!-- Saffron strands -->
+  <line x1="185" y1="162" x2="190" y2="170" stroke="#FF8F00" stroke-width="1.5" opacity="0.9"/>
+  <line x1="205" y1="160" x2="208" y2="168" stroke="#FF8F00" stroke-width="1.5" opacity="0.9"/>
+  <line x1="220" y1="163" x2="224" y2="170" stroke="#FF6F00" stroke-width="1.5" opacity="0.9"/>
+  <!-- Fried onions -->
+  <ellipse cx="155" cy="168" rx="8" ry="4" fill="#C4760A" opacity="0.7"/>
+  <ellipse cx="248" cy="168" rx="8" ry="4" fill="#C4760A" opacity="0.7"/>
+  <!-- Label background -->
+  <rect x="75" y="240" width="250" height="42" rx="8" fill="#BF360C" opacity="0.85"/>
+  <!-- Label text -->
+  <text x="200" y="257" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#FFE082">CHICKEN BIRYANI</text>
+  <text x="200" y="274" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#FFCC02">Main Course · $12</text>
+</svg>

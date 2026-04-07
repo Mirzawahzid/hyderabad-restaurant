@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#EFEBE9"/>
+      <stop offset="100%" stop-color="#5D4037"/>
+    </radialGradient>
+    <radialGradient id="stew" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#BCAAA4"/>
+      <stop offset="100%" stop-color="#6D4C41"/>
+    </radialGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+  <!-- Decorative pattern -->
+  <circle cx="30" cy="30" r="6" fill="#3E2723" opacity="0.35"/>
+  <circle cx="370" cy="30" r="6" fill="#3E2723" opacity="0.35"/>
+  <circle cx="30" cy="270" r="6" fill="#3E2723" opacity="0.35"/>
+  <circle cx="370" cy="270" r="6" fill="#3E2723" opacity="0.35"/>
+  <circle cx="55" cy="75" r="3" fill="#BF360C" opacity="0.3"/>
+  <circle cx="345" cy="85" r="3" fill="#BF360C" opacity="0.3"/>
+  <!-- Bowl shadow -->
+  <ellipse cx="200" cy="230" rx="100" ry="16" fill="#3E2723" opacity="0.25"/>
+  <!-- Bowl outer -->
+  <path d="M100 140 Q95 215 200 222 Q305 215 300 140 Z" fill="#5D4037"/>
+  <!-- Bowl rim -->
+  <ellipse cx="200" cy="140" rx="102" ry="20" fill="#795548"/>
+  <ellipse cx="200" cy="138" rx="98" ry="18" fill="#6D4C41"/>
+  <!-- Haleem stew surface -->
+  <ellipse cx="200" cy="148" rx="88" ry="14" fill="url(#stew)"/>
+  <!-- Stew texture blobs -->
+  <ellipse cx="165" cy="155" rx="20" ry="10" fill="#8D6E63" opacity="0.6"/>
+  <ellipse cx="205" cy="160" rx="22" ry="9" fill="#795548" opacity="0.6"/>
+  <ellipse cx="240" cy="153" rx="18" ry="10" fill="#8D6E63" opacity="0.6"/>
+  <ellipse cx="185" cy="168" rx="16" ry="8" fill="#6D4C41" opacity="0.5"/>
+  <ellipse cx="222" cy="170" rx="15" ry="7" fill="#5D4037" opacity="0.5"/>
+  <!-- Crispy onion topping -->
+  <ellipse cx="170" cy="148" rx="14" ry="6" fill="#C4760A" opacity="0.85"/>
+  <ellipse cx="205" cy="145" rx="12" ry="5" fill="#D4870B" opacity="0.85"/>
+  <ellipse cx="235" cy="149" rx="13" ry="6" fill="#C4760A" opacity="0.85"/>
+  <!-- Green garnish (coriander + mint) -->
+  <circle cx="165" cy="142" r="5" fill="#388E3C" opacity="0.9"/>
+  <circle cx="200" cy="138" r="6" fill="#2E7D32" opacity="0.9"/>
+  <circle cx="236" cy="142" r="5" fill="#388E3C" opacity="0.9"/>
+  <!-- Lemon slice -->
+  <circle cx="200" cy="138" r="10" fill="#FFF176" opacity="0.7" stroke="#F9A825" stroke-width="1"/>
+  <line x1="200" y1="128" x2="200" y2="148" stroke="#F9A825" stroke-width="0.8"/>
+  <line x1="190" y1="138" x2="210" y2="138" stroke="#F9A825" stroke-width="0.8"/>
+  <!-- Ginger slivers -->
+  <rect x="155" y="155" width="10" height="3" rx="1.5" fill="#FFE0B2" opacity="0.7" transform="rotate(-20 160 157)"/>
+  <rect x="230" y="157" width="10" height="3" rx="1.5" fill="#FFE0B2" opacity="0.7" transform="rotate(15 235 158)"/>
+  <!-- Oil sheen dots -->
+  <circle cx="175" cy="162" r="3" fill="#FF8F00" opacity="0.4"/>
+  <circle cx="220" cy="158" r="2.5" fill="#FF8F00" opacity="0.4"/>
+  <circle cx="195" cy="170" r="2" fill="#FF8F00" opacity="0.35"/>
+  <!-- Label -->
+  <rect x="75" y="240" width="250" height="42" rx="8" fill="#3E2723" opacity="0.85"/>
+  <text x="200" y="257" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#FFCCBC">HALEEM</text>
+  <text x="200" y="274" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#BCAAA4">Special · $10</text>
+</svg>
