@@ -1,0 +1,48 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: restaurant-ingress
+  namespace: hydrabadi-restaurant
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: hydrabadi-restaurant.local
+      http:
+        paths:
+          - path: /api/.*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: restaurant-api-service
+                port:
+                  number: 80
+          - path: /swagger/.*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: restaurant-api-service
+                port:
+                  number: 80
+          - path: /swagger$
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: restaurant-api-service
+                port:
+                  number: 80
+          - path: /grafana
+            pathType: Prefix
+            backend:
+              service:
+                name: grafana-service
+                port:
+                  number: 80
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: restaurant-ui-service
+                port:
+                  number: 80

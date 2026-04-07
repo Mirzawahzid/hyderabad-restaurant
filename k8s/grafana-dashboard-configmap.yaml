@@ -1,0 +1,227 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard
+  namespace: hydrabadi-restaurant
+data:
+  hyderabadi-restaurant.json: |
+    {
+      "id": null,
+      "uid": "hydrestaurant01",
+      "title": "HyderabadiRestaurant — Kubernetes Metrics",
+      "timezone": "browser",
+      "schemaVersion": 38,
+      "version": 1,
+      "refresh": "30s",
+      "time": { "from": "now-1h", "to": "now" },
+      "panels": [
+        {
+          "id": 1,
+          "type": "stat",
+          "title": "🍛 Running Containers",
+          "description": "Total containers currently running in the hydrabadi-restaurant namespace",
+          "gridPos": { "h": 4, "w": 8, "x": 0, "y": 0 },
+          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "options": {
+            "reduceOptions": { "calcs": ["lastNotNull"] },
+            "colorMode": "background",
+            "graphMode": "none",
+            "justifyMode": "center",
+            "textMode": "auto",
+            "orientation": "auto"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  { "color": "red", "value": null },
+                  { "color": "yellow", "value": 2 },
+                  { "color": "green", "value": 4 }
+                ]
+              },
+              "mappings": []
+            }
+          },
+          "targets": [
+            {
+              "expr": "count(container_last_seen{namespace=\"hydrabadi-restaurant\"})",
+              "legendFormat": "Containers",
+              "refId": "A"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "type": "gauge",
+          "title": "⚡ Total CPU Usage (%)",
+          "description": "Sum of CPU usage across all pods in the namespace",
+          "gridPos": { "h": 4, "w": 8, "x": 8, "y": 0 },
+          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "options": {
+            "reduceOptions": { "calcs": ["lastNotNull"] },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "orientation": "auto"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "percent",
+              "min": 0,
+              "max": 100,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  { "color": "green", "value": null },
+                  { "color": "yellow", "value": 50 },
+                  { "color": "red", "value": 80 }
+                ]
+              }
+            }
+          },
+          "targets": [
+            {
+              "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"hydrabadi-restaurant\"}[5m])) * 100",
+              "legendFormat": "CPU %",
+              "refId": "A"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "type": "gauge",
+          "title": "💾 Total Memory Usage (MB)",
+          "description": "Total working set memory used by all containers in the namespace",
+          "gridPos": { "h": 4, "w": 8, "x": 16, "y": 0 },
+          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "options": {
+            "reduceOptions": { "calcs": ["lastNotNull"] },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "orientation": "auto"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "decmbytes",
+              "min": 0,
+              "max": 512,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  { "color": "green", "value": null },
+                  { "color": "yellow", "value": 256 },
+                  { "color": "red", "value": 400 }
+                ]
+              }
+            }
+          },
+          "targets": [
+            {
+              "expr": "sum(container_memory_working_set_bytes{namespace=\"hydrabadi-restaurant\"}) / 1024 / 1024",
+              "legendFormat": "Memory MB",
+              "refId": "A"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "type": "timeseries",
+          "title": "📈 CPU Usage per Pod",
+          "description": "Real-time CPU usage rate broken down by pod",
+          "gridPos": { "h": 8, "w": 12, "x": 0, "y": 4 },
+          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "options": {
+            "tooltip": { "mode": "multi", "sort": "desc" },
+            "legend": { "displayMode": "list", "placement": "bottom" }
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "short",
+              "custom": { "lineWidth": 2, "fillOpacity": 10, "spanNulls": true }
+            }
+          },
+          "targets": [
+            {
+              "expr": "rate(container_cpu_usage_seconds_total{namespace=\"hydrabadi-restaurant\"}[5m])",
+              "legendFormat": "{{pod}}",
+              "refId": "A"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "type": "timeseries",
+          "title": "🧠 Memory Usage per Pod (MB)",
+          "description": "Working set memory used by each pod over time",
+          "gridPos": { "h": 8, "w": 12, "x": 12, "y": 4 },
+          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "options": {
+            "tooltip": { "mode": "multi", "sort": "desc" },
+            "legend": { "displayMode": "list", "placement": "bottom" }
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "decmbytes",
+              "custom": { "lineWidth": 2, "fillOpacity": 10, "spanNulls": true }
+            }
+          },
+          "targets": [
+            {
+              "expr": "container_memory_working_set_bytes{namespace=\"hydrabadi-restaurant\"} / 1024 / 1024",
+              "legendFormat": "{{pod}}",
+              "refId": "A"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "type": "timeseries",
+          "title": "🌐 Network Received (bytes/s)",
+          "description": "Inbound network traffic per pod",
+          "gridPos": { "h": 8, "w": 12, "x": 0, "y": 12 },
+          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "options": {
+            "tooltip": { "mode": "multi", "sort": "desc" },
+            "legend": { "displayMode": "list", "placement": "bottom" }
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "Bps",
+              "custom": { "lineWidth": 2, "fillOpacity": 10, "spanNulls": true }
+            }
+          },
+          "targets": [
+            {
+              "expr": "sum by (pod) (rate(container_network_receive_bytes_total{namespace=\"hydrabadi-restaurant\"}[5m]))",
+              "legendFormat": "{{pod}} RX",
+              "refId": "A"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "type": "timeseries",
+          "title": "📤 Network Transmitted (bytes/s)",
+          "description": "Outbound network traffic per pod",
+          "gridPos": { "h": 8, "w": 12, "x": 12, "y": 12 },
+          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "options": {
+            "tooltip": { "mode": "multi", "sort": "desc" },
+            "legend": { "displayMode": "list", "placement": "bottom" }
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "Bps",
+              "custom": { "lineWidth": 2, "fillOpacity": 10, "spanNulls": true }
+            }
+          },
+          "targets": [
+            {
+              "expr": "sum by (pod) (rate(container_network_transmit_bytes_total{namespace=\"hydrabadi-restaurant\"}[5m]))",
+              "legendFormat": "{{pod}} TX",
+              "refId": "A"
+            }
+          ]
+        }
+      ]
+    }

@@ -1,0 +1,14 @@
+# .NET
+**/bin/
+**/obj/
+
+# Node
+ui/node_modules/
+ui/build/
+
+# VS
+.vs/
+*.user
+
+# Misc
+.DS_Store
